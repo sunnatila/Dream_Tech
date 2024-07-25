@@ -19,11 +19,11 @@ statues = ('Ariza yuborilgan', 'Rad etish', 'Qabul qilingan', 'Kelishilgan', 'Ke
 
 @dp.message(F.text == 'Buyurtmalarni korish')
 async def send_orders(msg: types.Message, state: FSMContext):
-    # orders_ids = await db.get_orders_ids()
-    # if orders_ids:
+    orders_ids = await db.get_orders_ids()
+    if orders_ids:
         await msg.answer("Kormoqchi bo'lgan foydalanuvchining id sini tanlang:", reply_markup=await orders_users())
         await state.set_state(OrderState.order_user)
-    # else:
+    else:
         await msg.answer("Buyurtmalar hali mavjud emas!")
         await state.clear()
 

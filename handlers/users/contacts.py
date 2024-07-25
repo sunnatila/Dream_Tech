@@ -17,11 +17,11 @@ statues = ('Kontakt yuborilgan', 'Rad etish', 'Xabar o\'qildi', 'Kelishilgan', '
 
 @dp.message(F.text == 'Kontaktlarni korish')
 async def send_contacts(msg: types.Message, state: FSMContext):
-    # contact_ids = await db.get_contacts_ids()
-    # if contact_ids:
+    contact_ids = await db.get_contacts_ids()
+    if contact_ids:
         await msg.answer("Kormoqchi bo'lgan foydalanuvchining id sini tanlang:", reply_markup=await contacts_users())
         await state.set_state(ContactState.contact_user)
-    # else:
+    else:
         await msg.answer("Kontaktlar hali mavjud emas!")
         await state.clear()
 
