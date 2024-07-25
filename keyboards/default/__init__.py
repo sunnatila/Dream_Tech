@@ -1,1 +1,0 @@
-from .contact_or_order import contacts_or_orders
